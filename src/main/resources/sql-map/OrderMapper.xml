@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.airasia.ordering.mapper.OrderMapper">
+
+<insert id="createOrder" useGeneratedKeys="true" keyColumn="ORDER_ID" keyProperty="order.orderId">
+	INSERT INTO ORDERS(  ORDER_STATUS, ORDER_DATE, HOTEL_ID, 
+		GUEST_ID, CHECK_IN_DATE, CHECK_OUT_DATE , ORDER_PRICE, CREATION_TIME, MODIFIED_TIME, ENTITY_STATE)
+	VALUES (#{order.orderStatus}, CURRENT_DATE , #{order.hotelID}, 
+		#{order.guestID}, #{order.checkInDate}, #{order.checkOutDate}, #{order.orderPrice}, CURRENT_TIMESTAMP(0),null, 'ACTIVE');
+</insert>
+
+<insert id="createOrderDetails" >
+	<foreach item="orderDetail" collection="orderDetails" separator=";">
+		INSERT INTO ORDER_DETAILS (ORDER_ID, HOTEL_ID, ROOM_ID, ROOM_COUNT, PRICE, CREATION_TIME, MODIFIED_TIME, ENTITY_STATE)
+		VALUES (#{orderDetail.orderID},#{orderDetail.hotelID}, #{orderDetail.roomID},  #{orderDetail.roomCount}, #{orderDetail.price}, CURRENT_TIMESTAMP(0),null, 'ACTIVE')
+	</foreach>
+</insert>
+
+</mapper>

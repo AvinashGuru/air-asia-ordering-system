@@ -1,0 +1,21 @@
+{
+"firstName" : "Avinash",
+"lastName" : "G",
+"emailAddress" : "123",
+"contactNum" : "123",
+"hotelID" : "101",
+"checkInDate" : "12-09-2020",
+"checkOutDate" : "2020-09-15",
+"rooms" : [
+	{
+		"roomID" : 101 ,
+		"totalGuests" : 1 ,
+		"totalRooms" : 1
+	},
+	{
+		"roomID" : 102,
+		"totalGuests" : 2 ,
+		"totalRooms" : 1
+	}
+]
+}

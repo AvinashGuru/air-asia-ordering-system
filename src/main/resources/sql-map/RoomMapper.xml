@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.airasia.ordering.mapper.RoomMapper">
+
+	<select id="getRoomsByIds" resultType="com.airasia.ordering.enities.Room">
+		SELECT HOTEL_ID as hotelID, ROOM_ID as roomID ,  ROOM_NAME as roomName , TOTAL_ROOMS as totalRooms ,
+		 ADULT_CAPACITY as adultCapacity , CHILD_CAPACITY as childCapacity, PRICE as price 
+		FROM ROOM WHERE HOTEL_ID = #{hotelId} and ROOM_ID IN
+		<foreach item="roomId" collection="roomIds" open="(" close=")" separator=",">
+			#{roomId}
+		</foreach> 
+	</select>
+
+</mapper>
